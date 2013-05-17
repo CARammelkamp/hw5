@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Carina/Desktop/cs185/JakeWharton-ActionBarSherlock-4.3.1-0-gc0d437c/JakeWharton-ActionBarSherlock-071a61c/actionbarsherlock/bin/actionbarsherlock.jar" sourcepath="/actionbarsherlock/src"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>
