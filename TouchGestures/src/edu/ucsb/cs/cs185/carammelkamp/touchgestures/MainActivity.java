@@ -29,7 +29,7 @@ public class MainActivity extends SherlockFragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		this.setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		t = new TouchView(this.getApplicationContext());
 		setContentView(t);
 		String filepath = Environment.getExternalStorageDirectory().toString() +"/ucsbmap.png";
