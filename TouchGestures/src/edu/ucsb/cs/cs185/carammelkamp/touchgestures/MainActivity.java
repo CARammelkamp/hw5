@@ -38,7 +38,6 @@ public class MainActivity extends SherlockFragmentActivity {
 	    	Toast.makeText(this.getApplicationContext(), "bitmap is null!", Toast.LENGTH_SHORT).show();
     	t.setImageBitmap(bMap);
     	t.setScaleType(ScaleType.MATRIX);
-		
 	}
 
     //UPDATED
@@ -113,10 +112,7 @@ public class MainActivity extends SherlockFragmentActivity {
 		default:
 			return super.onOptionsItemSelected(item);
 		}
-	
 	}
-	
- 
 }
 	
 	

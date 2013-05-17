@@ -17,7 +17,6 @@ public class TouchView extends ImageView {
 	private float x=0;
     private float y=0;
     
-    private float scaleFactor = 1.0f;
     private ScaleGestureDetector mScaleDetector;
 
     static final int NONE = 0;
@@ -33,6 +32,8 @@ public class TouchView extends ImageView {
     private Matrix savedMatrix = null;
     float oldDistance = 1f;
     float oldSlope = 1f;
+    double oldrad = 0;
+    double newrad = 1;
     
 	public TouchView(Context context) {
 		 super(context);
@@ -62,7 +63,6 @@ public class TouchView extends ImageView {
     
     this.setImageMatrix(matrix);
     canvas.restore();
-    
 	}
 	
 	@Override
@@ -83,6 +83,7 @@ public class TouchView extends ImageView {
 				oldDistance = spacing(event);
 				
 				oldSlope = slope(event);
+				oldrad = Math.atan2( event.getY(0) - event.getY(1), event.getX(0) - event.getX(1));
 				
 				if(debug) System.out.println("in ActionPointerDown2");
 				if (oldDistance > 10f) {
@@ -94,7 +95,6 @@ public class TouchView extends ImageView {
 					if(debug) System.out.println("midpoint is null");
 				else
 					if(debug) System.out.println("midpoint: "+mid.x + mid.y);
-				//mode=ZOOM;
 				}
 				break;
 			 case MotionEvent.ACTION_UP:
@@ -104,11 +104,12 @@ public class TouchView extends ImageView {
 		     case MotionEvent.ACTION_MOVE:
 		    	 float newSlope = slope(event);
 		    	 double angle = 0;
-
+		    	 
 		    	 if(oldSlope > newSlope || oldSlope < newSlope)
 		    	 {
 		    		 modeR = ROTATE;
-		    		 angle = Math.toDegrees(Math.atan((newSlope - oldSlope)/(1+(oldSlope*newSlope))));
+		    		 newrad =  Math.atan2(event.getY(0) - event.getY(1), event.getX(0) - event.getX(1));
+			    	 angle = Math.toDegrees(newrad - oldrad);
 		    		 if(debug) System.out.println("oldslope: " + oldSlope +" newslope:"+newSlope +" angle: "+angle);
 		    	 }
 				 if (mode == DRAG) {
@@ -130,7 +131,7 @@ public class TouchView extends ImageView {
 					}
 					if(modeR == ROTATE)
 					{
-						matrix.postRotate((float)angle, mid.x, mid.y);
+						 matrix.postRotate((float)angle, mid.x, mid.y);
 					}
 					}
 				break;
@@ -153,11 +154,10 @@ public class TouchView extends ImageView {
 		  }
 	}
 	
-	
 	@SuppressLint({ "NewApi", "FloatMath" })
 	private float spacing(MotionEvent event) {
-		float x = event.getX(0) - event.getX(1); //event.getX(0)
-		float y = event.getY(0) - event.getY(1); //event.getY(0) 
+		float x = event.getX(0) - event.getX(1); 
+		float y = event.getY(0) - event.getY(1); 
 		return FloatMath.sqrt(x * x + y * y);
 		}
 	
