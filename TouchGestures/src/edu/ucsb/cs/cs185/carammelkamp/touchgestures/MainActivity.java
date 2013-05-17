@@ -7,11 +7,13 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.widget.Toast;
 import android.widget.ImageView.ScaleType;
+
 
 public class MainActivity extends SherlockFragmentActivity {
 
