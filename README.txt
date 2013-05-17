@@ -18,4 +18,7 @@ Link (3) was a very thorough description on how to install the library and modif
 For figuring out how to implement the ScaleGestureDetector, I used the following resource:
 http://stackoverflow.com/questions/5790503/can-we-use-scale-gesture-detector-for-pinch-zoom-in-android
 
+The "more" icon (the leftmost of the two icons on the actionbar) allows you to choose a picture from the sdcard to scale/rotate. The "add" icon allows you to view the settings,
+while the "help" icon allows you to view the author/version.
+
 Thanks!
